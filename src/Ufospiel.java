@@ -5,8 +5,11 @@ public class Ufospiel {
     private GLTastatur tastatur;
     private GLHimmel himmel;
     private Ufo meinUfo;
-    public Ufo k1;
-    public Asteroid kug1;
+
+    private Ufo dasUfo;
+
+
+    Asteroid[]Asteroiden;
 
     public Ufospiel() {
         kamera = new GLEntwicklerkamera(800, 600);
@@ -14,24 +17,32 @@ public class Ufospiel {
         licht = new GLLicht();
         tastatur = new GLTastatur();
         himmel = new GLHimmel("src/img/Sterne.jpg");
-        k1 = new Ufo();
-        kug1 = new Asteroid();
+        dasUfo = new Ufo();
+        Asteroiden = new Asteroid[50];
+        for (int i = 0; i < 50; i++) {
+            Asteroiden[i] = new Asteroid(dasUfo);
+        }
+
         run();
     }
+
     public void run() {
         while (!tastatur.esc()) {
-            kug1.astebewege();
+            for (int i = 0; i < 50; i++) {
+                Asteroiden[i].astebewege();
+            }
+
             if (tastatur.rechts()) {
-                k1.bewegeRechts();
+                dasUfo.bewegeRechts();
             }
             if (tastatur.links()) {
-                k1.bewegeLinks();
+                dasUfo.bewegeLinks();
             }
             if (tastatur.oben()) {
-                k1.bewegeoben();
+                dasUfo.bewegeoben();
             }
             if (tastatur.unten()) {
-                k1.bewegeunten();
+                dasUfo.bewegeunten();
             }
             Sys.warte();
         }
