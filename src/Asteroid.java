@@ -5,7 +5,6 @@ public class Asteroid {
     double xPos;
     double pY;
     Ufo dasUfo;
-    private GLTastatur tastatur1;
     double abstand;
 
     public Asteroid(Ufo pUfo) {
@@ -17,12 +16,12 @@ public class Asteroid {
     public void astebewege() {
         kug1.verschiebe(0, -1, 0);
         pY = kug1.gibY();
+        if (getroffen()) {
+            dasUfo.explodiere();
+        }
         if (pY < -350) {
             kug1.setzePosition(Math.random() * 1400 - 700, Math.random() * 1000 + 700, 0);
-            if (getroffen() == true) {
-                System.out.println("1");
-                dasUfo.explodiere();
-            }
+
         }
     }
 
@@ -39,18 +38,13 @@ public class Asteroid {
     }
 
     public boolean getroffen() {
-        tastatur1 = new GLTastatur();
-        if (!tastatur1.esc()) {
-
-            abstand = Math.sqrt(
-                    Math.pow(kug1.gibX() - dasUfo.gibX(), 2) + Math.pow(kug1.gibY() - dasUfo.gibY(), 2) + Math.pow(kug1.gibZ() - dasUfo.gibZ(), 2));
+        abstand = Math.sqrt(Math.pow(kug1.gibX() - dasUfo.gibX(), 2) + Math.pow(kug1.gibY() - dasUfo.gibY(), 2) + Math.pow(kug1.gibZ() - dasUfo.gibZ(), 2));
+        if (abstand < 50) {
+            return true;
+        } else {
+            return false;
         }
-            if (abstand < 50) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+    }
 
 }
 
