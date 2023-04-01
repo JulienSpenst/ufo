@@ -18,10 +18,7 @@ public class Ufo{
         k1.verschiebe(0,-1.5,0);
     }
     public void explodiere(){
-        double z = Math.random();
-        for(int i=0;i<2000;i++){
-          Sys.warte();
-        }
+        Sys.beenden();
     }
     public double gibX(){
         return k1.gibX();

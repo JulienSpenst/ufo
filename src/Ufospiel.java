@@ -32,16 +32,16 @@ public class Ufospiel {
                 Asteroiden[i].astebewege();
             }
 
-            if (tastatur.rechts()) {
+            if (tastatur.rechts() && dasUfo.gibX() < 700) {
                 dasUfo.bewegeRechts();
             }
-            if (tastatur.links()) {
+            if (tastatur.links() && dasUfo.gibX() > -700) {
                 dasUfo.bewegeLinks();
             }
-            if (tastatur.oben()) {
+            if (tastatur.oben() && dasUfo.gibY() < 700) {
                 dasUfo.bewegeoben();
             }
-            if (tastatur.unten()) {
+            if (tastatur.unten() && dasUfo.gibY() > -250) {
                 dasUfo.bewegeunten();
             }
             Sys.warte();
