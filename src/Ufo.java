@@ -1,6 +1,7 @@
 import GLOOP.*;
 public class Ufo{
     GLKegel k1;
+    GLTafel t1;
 
     public Ufo(){
         k1 = new GLKegel(0,0,0,7,12);
@@ -18,6 +19,8 @@ public class Ufo{
         k1.verschiebe(0,-1.5,0);
     }
     public void explodiere(){
+        new GLTafel(0,0,0,5,5,"Game Over");
+        Sys.warte(10000);
         Sys.beenden();
     }
     public double gibX(){
