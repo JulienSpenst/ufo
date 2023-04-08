@@ -4,7 +4,6 @@ public class Asteroid {
     GLKugel kug1;
     double xPos;
     double pY;
-    int L;
     Ufo dasUfo;
     double abstand;
 
@@ -12,17 +11,13 @@ public class Asteroid {
         kug1 = new GLKugel(Math.random() * 1400 - 700, Math.random() * 1000 + 700, 0, 50);
         kug1.setzeFarbe(1, 0, 0);
         dasUfo = pUfo;
-        L=3;
     }
 
     public void astebewege() {
         kug1.verschiebe(0, -1, 0);
         pY = kug1.gibY();
         if (getroffen()) {
-            L=L-1;
-            if (L==0) {
-                dasUfo.explodiere();
-            }
+            dasUfo.Leben(true);
         }
 
         if (pY < -350) {
@@ -50,6 +45,9 @@ public class Asteroid {
         } else {
             return false;
         }
+    }
+    public void Reset(){
+        kug1.verschiebe(0,2000,0);
     }
 
 }
